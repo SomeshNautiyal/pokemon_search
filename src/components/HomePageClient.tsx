@@ -23,7 +23,7 @@ export default function HomePageClient({ allPokemon, types }: HomePageClientProp
   return (
     <main className=" min-h-screen py-6">
       <div className="px-4">
-        <div className="mb-2 relative max-w-[30%]">
+        <div className="mb-2 relative sm:max-w-[30%]">
           <select
             className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-6 py-3 pr-10 shadow-sm appearance-none focus:outline-none"
             value={selectedType}
@@ -37,11 +37,11 @@ export default function HomePageClient({ allPokemon, types }: HomePageClientProp
             ))}
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-500 text-sm">
-            &#x25BE;
+            &#8964;
           </div>
         </div>
 
-        <div className="mb-14 flex items-center max-w-1/2">
+        <div className="mb-14 flex items-center sm:max-w-1/2">
           <div className="relative w-full">
             <Image
               src="/search.svg"
@@ -60,7 +60,7 @@ export default function HomePageClient({ allPokemon, types }: HomePageClientProp
           </div>
           <button
             onClick={() => handleSearch(searchTerm)}
-            className="px-6 py-3 bg-blue-950 text-white rounded-r-lg shadow-md hover:bg-blue-600 focus:outline-none"
+            className="px-6 py-3 bg-[#004368] text-white rounded-r-lg shadow-md focus:outline-none"
           >
             Search
           </button>

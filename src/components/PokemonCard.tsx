@@ -21,7 +21,7 @@ const PokemonCard = ({ name, url }: PokemonListItem) => {
         <h2 className="text-lg font-semibold capitalize text-gray-800">{name}</h2>
         <Link
           href={`/${name}`}
-          className="text-sm text-blue-500 hover:underline"
+          className="text-sm text-[#86b3cf] hover:underline"
         >
           Details →
         </Link>

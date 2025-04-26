@@ -8,7 +8,7 @@ export default function BackButton() {
   return (
     <span
       onClick={() => router.back()}
-      className="absolute top-4 left-4 text-[#07bf7b] cursor-pointer flex items-center"
+      className="absolute top-4 left-4 text-[#47d0b7] cursor-pointer flex items-center"
     >
       <span className="mr-2">{"<"}</span>
       <span className="font-bold">Back</span>
