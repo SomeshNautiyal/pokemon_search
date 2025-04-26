@@ -13,7 +13,6 @@ export async function fetchPokemonList(offset: number, limit: number = 20): Prom
     if (!data.results || !Array.isArray(data.results)) {
       throw new Error("Invalid data format received from list API");
     }
-    console.log(data.results);
     return data.results.map((pokemon: Pokemon, index: number) => ({
       ...pokemon,
       image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${offset + index + 1}.png`,
