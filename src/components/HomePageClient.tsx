@@ -3,6 +3,7 @@ import PokemonCard from "./PokemonCard";
 import Image from "next/image";
 import { useHomePageClientLogic } from "@/hooks/useHomePageClientLogic";
 import { Pokemon, PokemonListItem } from "../../types/pokemon";
+import { useRouter } from "next/navigation";
 
 interface HomePageClientProps {
   allPokemon: Pokemon[];
@@ -20,6 +21,9 @@ export default function HomePageClient({ allPokemon, types }: HomePageClientProp
     handleSearch,
   } = useHomePageClientLogic(allPokemon);
 
+  const router = useRouter();
+
+
   return (
     <main className=" min-h-screen py-6">
       <div className="px-4">
@@ -27,7 +31,11 @@ export default function HomePageClient({ allPokemon, types }: HomePageClientProp
           <select
             className="w-full bg-white text-gray-800 border border-gray-300 rounded-lg px-6 py-3 pr-10 shadow-sm appearance-none focus:outline-none"
             value={selectedType}
-            onChange={(e) => setSelectedType(e.target.value)}
+            onChange={(e) => {setSelectedType(e.target.value)
+              const params = new URLSearchParams(window.location.search);
+              params.set("type", e.target.value);
+              router.push(`?${params.toString()}`);
+            }}
           >
             <option value="">Select</option>
             {types.map((type) => (
@@ -55,7 +63,11 @@ export default function HomePageClient({ allPokemon, types }: HomePageClientProp
               placeholder="Search..."
               className="w-full pl-10 pr-4 py-3 bg-white text-gray-800 border border-gray-300 rounded-l-lg shadow-sm focus:outline-none"
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => {setSearchTerm(e.target.value)
+              const params = new URLSearchParams(window.location.search);
+              params.set("search", e.target.value);
+              router.push(`?${params.toString()}`);
+              }}
             />
           </div>
           <button

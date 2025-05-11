@@ -4,11 +4,15 @@ import { useSearchFilter } from "@/hooks/useSearchFilter";
 import { usePokemonFilterByType } from "@/hooks/usePokemonFilterByType";
 import { fetchPokemonList } from "@/lib/pokemon";
 import { Pokemon } from "../../types/pokemon";
+import { useSearchParams } from "next/navigation";
 
 export function useHomePageClientLogic(allPokemon: Pokemon[]) {
+  const params = useSearchParams();
+  const type = params.get("type");
+  const search = params.get("search");
   const [pokemon, setPokemon] = useState<Pokemon[]>(allPokemon);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedType, setSelectedType] = useState<string>("");
+  const [searchTerm, setSearchTerm] = useState(search|| "");
+  const [selectedType, setSelectedType] = useState<string>(type || "");
   const [loading, setLoading] = useState(false);
   const [offset, setOffset] = useState(20);
 
